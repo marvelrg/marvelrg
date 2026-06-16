@@ -14,7 +14,56 @@ type Warga struct {
 	Setoran []Setoran
 }
 
-var daftarWarga []Warga
+var daftarWarga = []Warga{
+	{
+		ID:   1,
+		Nama: "Budi Santoso",
+		Setoran: []Setoran{
+			{
+				ID:      1,
+				Berat:   2.5,
+				Tanggal: "2025-06-01",
+			},
+			{
+				ID:      1,
+				Berat:   3.2,
+				Tanggal: "2025-06-10",
+			},
+		},
+	},
+	{
+		ID:   2,
+		Nama: "Siti Aminah",
+		Setoran: []Setoran{
+			{
+				ID:      2,
+				Berat:   1.8,
+				Tanggal: "2025-06-05",
+			},
+			{
+				ID:      2,
+				Berat:   2.1,
+				Tanggal: "2025-06-12",
+			},
+			{
+				ID:      2,
+				Berat:   1.5,
+				Tanggal: "2025-06-15",
+			},
+		},
+	},
+	{
+		ID:   3,
+		Nama: "Andi Wijaya",
+		Setoran: []Setoran{
+			{
+				ID:      2,
+				Berat:   4.0,
+				Tanggal: "2025-06-08",
+			},
+		},
+	},
+}
 
 func main() {
 	var pilih int
@@ -104,10 +153,17 @@ func fiturPencarian() {
 	fmt.Scan(&pilih)
 	if pilih == 1 {
 		var id int
+		var total float64
 		fmt.Print("Cari ID: "); fmt.Scan(&id)
 		for i := 0; i < len(daftarWarga); i++ {
 			if daftarWarga[i].ID == id {
-				fmt.Printf("Ketemu: %s\n", daftarWarga[i].Nama)
+				for j := 0; j < len(daftarWarga[i].Setoran);j++ {
+					total += daftarWarga[i].Setoran[j].Berat
+				}	
+				fmt.Printf("Ketemu:\n")
+				fmt.Printf("ID: %d \n", daftarWarga[i].ID)
+				fmt.Printf("Nama: %s \n", daftarWarga[i].Nama)
+				fmt.Printf("Total: %v kg \n", total)
 				return
 			}
 		}
@@ -127,7 +183,10 @@ func fiturPencarian() {
 		for low <= high {
 			mid := (low + high) / 2
 			if daftarWarga[mid].Nama == nama {
-				fmt.Printf("Ketemu: ID %d\n", daftarWarga[mid].ID); return
+				fmt.Printf("Ketemu:\n")
+				fmt.Printf("ID: %d\n", daftarWarga[mid].ID)
+				fmt.Printf("Nama: %s\n", daftarWarga[mid].Nama)
+				return
 			} else if daftarWarga[mid].Nama < nama {
 				low = mid + 1
 			} else {

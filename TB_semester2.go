@@ -17,7 +17,7 @@ type Warga struct {
 var daftarWarga = []Warga{
 	{
 		ID:   1,
-		Nama: "Budi Santoso",
+		Nama: "Muhammad Rachman",
 		Setoran: []Setoran{
 			{
 				ID:      1,
@@ -33,7 +33,7 @@ var daftarWarga = []Warga{
 	},
 	{
 		ID:   2,
-		Nama: "Siti Aminah",
+		Nama: "Febrando Hasby",
 		Setoran: []Setoran{
 			{
 				ID:      2,
@@ -54,7 +54,7 @@ var daftarWarga = []Warga{
 	},
 	{
 		ID:   3,
-		Nama: "Andi Wijaya",
+		Nama: "Muhammad ILham Orion",
 		Setoran: []Setoran{
 			{
 				ID:      2,
@@ -169,7 +169,7 @@ func fiturPencarian() {
 		}
 		fmt.Println("Tidak ditemukan.")
 	} else {
-		// Logika Binary Search (perlu sorting nama terlebih dahulu)
+
 		for i := 0; i < len(daftarWarga)-1; i++ {
 			for j := i + 1; j < len(daftarWarga); j++ {
 				if daftarWarga[i].Nama > daftarWarga[j].Nama {
@@ -214,7 +214,7 @@ func fiturPengurutan() {
 			}
 			daftarWarga[i], daftarWarga[max] = daftarWarga[max], daftarWarga[i]
 		}
-	} else { // Insertion Sort
+	} else { 
 		for i := 1; i < n; i++ {
 			key := daftarWarga[i]
 			var bKey float64
